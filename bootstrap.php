@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/silex.phar';
+require_once __DIR__ . '/vendor/simplehtmldom/simple_html_dom.php';
 
 use Symfony\Component\Yaml\Yaml;
 
