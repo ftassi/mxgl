@@ -28,4 +28,4 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.class_path' => __DIR__ . '/vendor/twig/lib',
 ));
 
-echo $_ENV['dbname'];
+echo $_ENV['DBNAME'];
