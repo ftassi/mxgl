@@ -1,8 +1,0 @@
-app:
-  debug: false
-db:
-  driver:   pdo_mysql
-  host:     localhost
-  dbname:   mxgl
-  user:     root
-  password: root
