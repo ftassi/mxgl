@@ -1,6 +1,6 @@
 /* HTML5 ✰ Boilerplate
  * ==|== normalize ==========================================================
- */
+*/
 
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
 audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
@@ -62,13 +62,394 @@ table { border-collapse: collapse; border-spacing: 0; }
 td { vertical-align: top; }
 
 
+/* ==|== GRID 960gs styles ==================================================
+   Author: 
+   ========================================================================== */
+
+/*
+	Variable Grid System.
+	Learn more ~ http://www.spry-soft.com/grids/
+	Based on 960 Grid System - http://960.gs/
+
+	Licensed under GPL and MIT.
+*/
+
+/*
+  Forces backgrounds to span full width,
+  even if there is horizontal scrolling.
+  Increase this if your layout is wider.
+
+  Note: IE6 works fine without this fix.
+*/
+
+body {
+  min-width: 520px;
+}
+
+/* Containers
+----------------------------------------------------------------------------------------------------*/
+.container_8 {
+	margin-left: auto;
+	margin-right: auto;
+	width: 520px;
+}
+
+/* Grid >> Global
+----------------------------------------------------------------------------------------------------*/
+
+
+.grid_1,
+.grid_2,
+.grid_3,
+.grid_4,
+.grid_5,
+.grid_6,
+.grid_7,
+.grid_8 {
+	display:inline;
+	float: left;
+	position: relative;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+
+
+.push_1, .pull_1,
+.push_2, .pull_2,
+.push_3, .pull_3,
+.push_4, .pull_4,
+.push_5, .pull_5,
+.push_6, .pull_6,
+.push_7, .pull_7,
+.push_8, .pull_8 {
+	position:relative;
+}
+
+
+/* Grid >> Children (Alpha ~ First, Omega ~ Last)
+----------------------------------------------------------------------------------------------------*/
+
+.alpha {
+	margin-left: 0;
+}
+
+.omega {
+	margin-right: 0;
+}
+
+/* Grid >> 8 Columns
+----------------------------------------------------------------------------------------------------*/
+
+
+.container_8 .grid_1 {
+	width:45px;
+}
+
+.container_8 .grid_2 {
+	width:110px;
+}
+
+.container_8 .grid_3 {
+	width:175px;
+}
+
+.container_8 .grid_4 {
+	width:240px;
+}
+
+.container_8 .grid_5 {
+	width:305px;
+}
+
+.container_8 .grid_6 {
+	width:370px;
+}
+
+.container_8 .grid_7 {
+	width:435px;
+}
+
+.container_8 .grid_8 {
+	width:500px;
+}
+
+
+
+
+/* Prefix Extra Space >> 8 Columns
+----------------------------------------------------------------------------------------------------*/
+
+
+.container_8 .prefix_1 {
+	padding-left:65px;
+}
+
+.container_8 .prefix_2 {
+	padding-left:130px;
+}
+
+.container_8 .prefix_3 {
+	padding-left:195px;
+}
+
+.container_8 .prefix_4 {
+	padding-left:260px;
+}
+
+.container_8 .prefix_5 {
+	padding-left:325px;
+}
+
+.container_8 .prefix_6 {
+	padding-left:390px;
+}
+
+.container_8 .prefix_7 {
+	padding-left:455px;
+}
+
+
+
+/* Suffix Extra Space >> 8 Columns
+----------------------------------------------------------------------------------------------------*/
+
+
+.container_8 .suffix_1 {
+	padding-right:65px;
+}
+
+.container_8 .suffix_2 {
+	padding-right:130px;
+}
+
+.container_8 .suffix_3 {
+	padding-right:195px;
+}
+
+.container_8 .suffix_4 {
+	padding-right:260px;
+}
+
+.container_8 .suffix_5 {
+	padding-right:325px;
+}
+
+.container_8 .suffix_6 {
+	padding-right:390px;
+}
+
+.container_8 .suffix_7 {
+	padding-right:455px;
+}
+
+
+
+/* Push Space >> 8 Columns
+----------------------------------------------------------------------------------------------------*/
+
+
+.container_8 .push_1 {
+	left:65px;
+}
+
+.container_8 .push_2 {
+	left:130px;
+}
+
+.container_8 .push_3 {
+	left:195px;
+}
+
+.container_8 .push_4 {
+	left:260px;
+}
+
+.container_8 .push_5 {
+	left:325px;
+}
+
+.container_8 .push_6 {
+	left:390px;
+}
+
+.container_8 .push_7 {
+	left:455px;
+}
+
+
+
+/* Pull Space >> 8 Columns
+----------------------------------------------------------------------------------------------------*/
+
+
+.container_8 .pull_1 {
+	left:-65px;
+}
+
+.container_8 .pull_2 {
+	left:-130px;
+}
+
+.container_8 .pull_3 {
+	left:-195px;
+}
+
+.container_8 .pull_4 {
+	left:-260px;
+}
+
+.container_8 .pull_5 {
+	left:-325px;
+}
+
+.container_8 .pull_6 {
+	left:-390px;
+}
+
+.container_8 .pull_7 {
+	left:-455px;
+}
+
+
+
+
+/* `Clear Floated Elements
+----------------------------------------------------------------------------------------------------*/
+
+/* http://sonspring.com/journal/clearing-floats */
+
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+/* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */
+
+.clearfix:before,
+.clearfix:after {
+  content: '\0020';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/*
+  The following zoom:1 rule is specifically for IE6 + IE7.
+  Move to separate stylesheet if invalid CSS is a problem.
+*/
+
+.clearfix {
+  zoom: 1;
+}
+
+/* ==|== Facebook styles =====================================================
+   Author: http://devtacular.com/articles/bkonrad/how-to-style-an-application-like-facebook
+   ========================================================================== */
+
+/* Default Facebook CSS */
+.fbbody
+{
+    font-family: "lucida grande" ,tahoma,verdana,arial,sans-serif;
+    font-size: 11px;
+    color: #333333;
+}
+/* Default Anchor Style */
+.fbbody a
+{
+    color: #3b5998;
+    outline-style: none;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: bold;
+}
+.fbbody a:hover
+{
+    text-decoration: underline;
+}
+/* Facebook Box Styles */
+.fbgreybox
+{
+    background-color: #f7f7f7;
+    border: 1px solid #cccccc;
+    color: #333333;
+    padding: 10px;
+    font-size: 13px;
+    font-weight: bold;
+}
+.fbbluebox
+{
+    background-color: #eceff6;
+    border: 1px solid #d4dae8;
+    color: #333333;
+    padding: 10px 0px;
+    font-size: 13px;
+    font-weight: bold;
+}
+.fbinfobox
+{
+    background-color: #fff9d7;
+    border: 1px solid #e2c822;
+    color: #333333;
+    padding: 10px;
+    font-size: 13px;
+    font-weight: bold;
+}
+.fberrorbox
+{
+    background-color: #ffebe8;
+    border: 1px solid #dd3c10;
+    color: #333333;
+    padding: 10px;
+    font-size: 13px;
+    font-weight: bold;
+}
+/* Content Divider on White Background */
+.fbcontentdivider
+{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 520px;
+    height: 1px;
+    background-color: #d8dfea;
+}
+/* Facebook Tab Style */
+.fbtab
+{
+    padding: 8px;
+    background-color: #d8dfea;
+    color: #3b5998;
+    font-weight: bold;
+    float: left;
+    margin-right: 4px;
+    text-decoration: none;
+}
+.fbtab:hover
+{
+    background-color: #3b5998;
+    color: #ffffff;
+    cursor: hand;
+}
+
+
 /* ==|== primary styles =====================================================
    Author: 
    ========================================================================== */
 
-
-
-
+.noborders
+{
+    border: none;
+}
 
 
 
@@ -107,18 +488,18 @@ td { vertical-align: top; }
 
 
 /* ==|== print styles ======================================================= */
- 
+
 @media print {
-  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } 
-  a, a:visited { text-decoration: underline; }
-  a[href]:after { content: " (" attr(href) ")"; }
-  abbr[title]:after { content: " (" attr(title) ")"; }
-  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; } 
-  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
-  thead { display: table-header-group; }
-  tr, img { page-break-inside: avoid; }
-  img { max-width: 100% !important; }
-  @page { margin: 0.5cm; }
-  p, h2, h3 { orphans: 3; widows: 3; }
-  h2, h3 { page-break-after: avoid; }
+    * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } 
+    a, a:visited { text-decoration: underline; }
+    a[href]:after { content: " (" attr(href) ")"; }
+    abbr[title]:after { content: " (" attr(title) ")"; }
+    .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; } 
+    pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+    thead { display: table-header-group; }
+    tr, img { page-break-inside: avoid; }
+    img { max-width: 100% !important; }
+    @page { margin: 0.5cm; }
+    p, h2, h3 { orphans: 3; widows: 3; }
+    h2, h3 { page-break-after: avoid; }
 }
