@@ -6,10 +6,10 @@
 /* =global elements
 --------------------------------------------- */
 body {
-  color: #999;
+  color: #333;
   font: 14px/1.5em "Lucida Grande", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
-  width: 742px;
+  width: 720px;
 
   margin: 20px; /* NOTE: Temporary */
 }
