@@ -1,1 +1,3 @@
 /config/config.yml
+/silex/cache/*
+!/silex/cache/.gitignore

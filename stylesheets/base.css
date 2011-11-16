@@ -126,8 +126,7 @@ header .tagline {
 .facebook-button .plus {
   background-position: 6px -17px;
 }
-
-.button:link, .button:visited {
+input.button, .button:link, .button:visited {
   background-color: #7a90c0;
   background-image: -moz-linear-gradient(top, #97afe2, #6073a1);
   background-image: -ms-linear-gradient(top, #97afe2, #6073a1);
@@ -149,6 +148,10 @@ header .tagline {
   padding: 0 25px;
   text-decoration: none;
   text-shadow: 0 1px 1px rgba(255, 255, 255, .2);
+}
+
+input.button{
+    padding: 5px 10px;
 }
 /* ------------------------------------------ */
 

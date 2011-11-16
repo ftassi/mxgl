@@ -14,7 +14,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1">
 
         <!-- CSS concatenated and minified via ant build script-->
-        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/stylesheets/screen.css" media="screen">
         <!-- end CSS-->
 
         <script src="/js/libs/modernizr-2.0.6.min.js"></script>
@@ -23,31 +23,38 @@
     <body>
 
         <div id="container">
-            <header>
-
-            </header>
-            <div id="main" role="main" class="container_8 fbbody">
-                <h1>MXGL</h1>
+            <header class="clearfix">
+                <h1>My Xmas Gift List</h1>
                 <p class="grid_8">
                     Ciao Frangino,
                 </p>
                 <p class="grid_8">
-                    Anche Babbo Natale si è modernizzato e finalmente gli puoi scrivere la famosa «letterina» direttamente su Facebook!
+                    Anche Babbo Natale si è modernizzato e finalmente gli puoi 
+                    scrivere la famosa «letterina» direttamente su Facebook!
                 </p>
                 <p class="grid_8">
-                    Naviga su Internet sui siti dei prodotti o servizi che vorrest i ricevere in regalo quest’anno e copia l’indirizzo (l’URL che vedi in alto sul tuo browser) direttamente  nel box qui sotto e poi premi OK.
+                    Naviga su Internet sui siti dei prodotti o servizi che 
+                    vorrest i ricevere in regalo quest’anno e copia l’indirizzo 
+                    (l’URL che vedi in alto sul tuo browser) direttamente  nel 
+                    box qui sotto e poi premi OK.
                 </p>
                 <p class="grid_8">
-                    Gli aiutanti di babbo natale aggiungeranno il regalo alla lista . Ricorda che puoi aggiungere un massimo di 5 regali (solo se te li meriti).
+                    Gli aiutanti di babbo natale aggiungeranno il regalo 
+                    alla lista . Ricorda che puoi aggiungere un massimo di 
+                    5 regali (solo se te li meriti).
                 </p>
-
+            </header>
+            <section id="get-started">
+                <p>Aggiungi un regalo</p>
                 <form class="clearfix">
                     <fieldset class="fbbluebox noborders">
                         <label class="grid_6"><input type="text" name="product" /></label>
-                        <label class="grid_2"><input type="submit" value="Aggiungi Regalo" /></label>
+                        <label class="grid_2"><input class="button" type="submit" value="Aggiungi Regalo" /></label>
                     </fieldset>
                 </form>
-            </div>
+            </section>
+            <section id="guides">
+            </section>
             <footer>
 
             </footer>
