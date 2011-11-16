@@ -27,7 +27,7 @@
             <header class="clearfix">
                 <h1>My Xmas Gift List</h1>
                 <p class="grid_8">
-                    Ciao {{ name }},
+                    Ciao ,
                 </p>
                 <p class="grid_8">
                     Anche Babbo Natale si è modernizzato e finalmente gli puoi 
@@ -41,9 +41,10 @@
             </header>
             <section id="get-started">
                 <p>Aggiungi un regalo</p>
-                <form class="clearfix">
+                <form action="/add-gift" method="post" class="clearfix">
+                    <input type="hidden" name="gift[user_id]" id="gift_user_id" value="{{ user_id }}" />
                     <fieldset class="fbbluebox noborders">
-                        <label class="grid_6"><input class="gift-url" type="text" name="product" /></label>
+                        <label class="grid_6"><input class="gift-url" type="text" name="gift[url]" id="gift_url" /></label>
                         <label class="grid_2"><input class="button" type="submit" value="Aggiungi Regalo" /></label>
                     </fieldset>
                 </form>
@@ -55,6 +56,18 @@
                     (l’URL che vedi in alto sul tuo browser) direttamente  nel 
                     box qui sotto e poi premi OK.
                 </p>
+            </section>
+            <section id="list" class="clearfix">
+                <h2>Hai scelto questi regali</h2>
+                <ul>
+                    {% for gift in gifts_list %}
+                    <li>
+                        <img src="{{gift.image}}" alt"{{ gift.title }}" />
+                        {{ gift.title }}<br />
+                        {{ gift.description }}
+                    </li>
+                    {% endfor %}
+                </ul>
             </section>
             <footer>
 

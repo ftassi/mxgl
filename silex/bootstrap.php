@@ -9,6 +9,7 @@ require_once __DIR__ . '/extensions/FacebookServiceProvider/FacebookServiceProvi
 
 use Knp\Silex\ServiceProvider\DoctrineMongoDBServiceProvider;
 use Doctrine\Common\Annotations\AnnotationRegistry;
+use Document\Gift;
 
 $app = new Silex\Application();
 $app['debug'] = true;
@@ -42,5 +43,15 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__ . '/view',
     'twig.class_path' => __DIR__ . '/vendor/twig/lib',
 ));
+
+$app['gift'] = function(){
+    
+    $gift = new Gift();
+    $gift->setTitle('Playstation 3');
+    $gift->setImage('http://i.telegraph.co.uk/multimedia/archive/01551/ps3_1551882c.jpg');
+    $gift->setDescription('Are you ready to play? We thought so. The PS3™ system has you covered. If you want the best games from the best franchises in high definition and stereoscopic 3D, you’ve come to the right place. But play doesn’t stop there. The PS3™ system is the only console with a built in Blu-ray™ player. Watch or stream thousands of movies in high definition directly to your system. And/but who wants to play alone? The PlayStation®Network has all the content and community support to ensure you always have someone to play with. Welcome to the PlayStation Nation. Long Live Play.™');
+    $gift->setNote('LA VOGLIO!!!');
+    return $gift;
+};
 
 AnnotationRegistry::registerFile(__DIR__ . '/vendor/doctrine-mongodb-odm/lib/Doctrine/ODM/MongoDB/Mapping/Annotations/DoctrineAnnotations.php');

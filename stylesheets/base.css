@@ -24,7 +24,8 @@ a:hover, a:active {
   text-decoration: underline;
 }
 
-h1 {
+h1,
+h2{
   color: #656565;
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 18px;
@@ -183,12 +184,14 @@ input.button{
 /* =guides/samples spacing
 --------------------------------------------- */
 #guides h1,
-#samples h1 {
+#samples h1,
+#list h1,
+#list h2{
   margin-bottom: 15px;
   text-align: center;
 }
 
-#guides, #samples {
+#guides, #samples, #list {
   padding: 20px 10px 20px 14px;
 }
 
@@ -258,7 +261,8 @@ input.button{
 
 /* =samples
 --------------------------------------------- */
-#samples {
+#samples, 
+#list {
   background-image: url("../images/samples-bg.png");
   border-bottom: 1px solid #dadada;
   border-left: 1px solid #b3b3b3;
