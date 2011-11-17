@@ -15,6 +15,7 @@ $app->post('/', function () use ($app)
             ->findBy(array('userId' => $userId));
 
         return $app['twig']->render('index.twig', array(
+                'facebook_application_id' => getenv('FACEBOOK_APP_ID'),
                 'user_id' => $userId,
                 'gifts_list' => $userGiftsList,
             ));
