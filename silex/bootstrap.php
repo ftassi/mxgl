@@ -18,6 +18,11 @@ $app['autoloader']->registerNamespace('Document', __DIR__);
 $app['autoloader']->registerNamespace('Knp', __DIR__ . '/extensions/DoctrineMongoDB/src');
 $app['autoloader']->registerNamespace('TobiassjostenSilexProvider\Facebook', __DIR__ . '/extensions/FacebookServiceProvider');
 
+//Registro SessionServiceProvider e inizializzo la sessione prima che lo faccio
+//l'sdk di Facebook (altrimenti SessionServiceProvider genera un notice.)
+$app->register(new Silex\Provider\SessionServiceProvider());
+$app['session']->start();
+
 $app->register(new TobiassjostenSilexProvider\Facebook\FacebookServiceProvider(), array(
     'facebook.class_file' => __DIR__ . '/vendor/facebook-php-sdk/src/facebook.php',
     'facebook.app_id' => getenv('FACEBOOK_APP_ID'),
