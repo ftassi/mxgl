@@ -5,8 +5,9 @@ require_once __DIR__ . '/silex/bootstrap.php';
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-$app->post('/', function () use ($app)
+$app->match('/', function () use ($app)
     {
+        var_dump($app['facebook']);
         $signedRequest = $app['facebook']->getSignedRequest();
         $userId = $signedRequest['user_id'];
         
@@ -15,11 +16,12 @@ $app->post('/', function () use ($app)
             ->findBy(array('userId' => $userId));
 
         return $app['twig']->render('index.twig', array(
-                'facebook_application_id' => getenv('FACEBOOK_APP_ID'),
+                'facebook' => $app['facebook'],
                 'user_id' => $userId,
                 'gifts_list' => $userGiftsList,
             ));
-    });
+    })
+    ->method('GET|POST');
 
 $app->post('/add-gift', function(Request $request) use($app)
     {
