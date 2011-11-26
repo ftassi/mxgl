@@ -1,0 +1,55 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <title></title>
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <!-- CSS concatenated and minified via ant build script-->
+        <link rel="stylesheet" href="/stylesheets/screen.css" media="screen">
+        <link rel="stylesheet" href="/stylesheets/custom.css" media="screen">
+        <!-- end CSS-->
+    </head>
+
+    <body>
+        <div id="container">
+            <header class="clearfix">
+                <h1>My Xmas Gift List, Debug View</h1>
+            </header>
+            <section id="get-started">
+                <p>Debug Info</p>
+                
+            </section>
+            <footer>
+            </footer>
+        </div> <!--! end of #container -->
+        <div id="fb-root"></div>
+        <script>
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId      : '{{facebook.appId}}', // App ID
+                    status     : true, // check login status
+                    cookie     : true, // enable cookies to allow the server to access the session
+                    oauth      : true, // enable OAuth 2.0
+                    xfbml      : true  // parse XFBML
+                });
+
+
+            // Load the SDK Asynchronously
+            (function(d){
+                var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+                js = d.createElement('script'); js.id = id; js.async = true;
+                js.src = "//connect.facebook.net/en_US/all.js";
+                d.getElementsByTagName('head')[0].appendChild(js);
+            }(document));
+        </script>
+    </body>
+</html>

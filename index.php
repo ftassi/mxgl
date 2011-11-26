@@ -7,18 +7,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 $app->match('/', function () use ($app)
     {
-        var_dump($app['facebook']);
         $signedRequest = $app['facebook']->getSignedRequest();
-        $userId = $signedRequest['user_id'];
-        
-        $userGiftsList = $app['doctrine.odm.mongodb.dm']
-            ->getRepository('Document\Gift')
-            ->findBy(array('userId' => $userId));
 
-        return $app['twig']->render('index.twig', array(
+        return $app['twig']->render('debug.twig', array(
                 'facebook' => $app['facebook'],
-                'user_id' => $userId,
-                'gifts_list' => $userGiftsList,
             ));
     })
     ->method('GET|POST');
