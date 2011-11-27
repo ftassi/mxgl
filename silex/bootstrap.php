@@ -27,6 +27,7 @@ $app['config'] = array(
     'google_api_key' => getenv('GOOGLE_API_KEY'),
     'facebook_app_id' => getenv('FACEBOOK_APP_ID'),
     'facebook_secret' => getenv('FACEBOOK_SECRET'),
+    'mongodb_host' => getenv('MONGOLAB_URI'),
 );
 
 $app->register(new TobiassjostenSilexProvider\Facebook\FacebookServiceProvider(), array(
@@ -41,7 +42,7 @@ $app->register(new DoctrineMongoDBServiceProvider(), array(
     'doctrine.odm.mongodb.hydrators_dir' => __DIR__ . '/cache',
     'doctrine.odm.mongodb.connection_options' => array(
         'database' => 'mxgl',
-        'host' => 'localhost',
+        'host' => $app['config']['mongodb_host'],
     ),
     'doctrine.odm.mongodb.documents' => array(
         array('type' => 'annotation', 'path' => __DIR__ . '/Document', 'namespace' => 'Document'),
