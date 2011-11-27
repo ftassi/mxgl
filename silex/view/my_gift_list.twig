@@ -29,7 +29,8 @@
         <dt>{{ gift.title }}</dt>
         <dd>
             <img src="{{gift.image}}" alt"{{ gift.title }}" />
-            {{ gift.description }}
+            {{ gift.description }}<br />
+            <a title="{{ gift.title }}" href="{{ gift.url }}">{{ gift.url }}</a>
         </dd>
         {% endfor %}
     </dl>

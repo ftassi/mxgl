@@ -14,48 +14,56 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations\Id;
  */
 class Gift
 {
+
     /**
      *
      * @Id(strategy="AUTO")
      */
     private $id;
-    
+
     /**
      * @var string
      * @Field(type="string")
      */
     private $title;
-    
+
     /**
      * @var string
      * @Field(type="string")
      */
     private $image;
-    
+
     /**
      * @var string
      * @Field(type="string")
      */
     private $description;
-    
+
     /**
      * @var string
      * @Field(type="string")
      */
     private $note;
-    
+
     /**
      * @var string
      * @Field(type="string")
      */
     private $userId;
-    
+
     /**
      * @var string
      * @Field(type="int")
      */
     private $listId;
-    
+
+    /**
+     *
+     * @var string
+     * #Field(type="string")
+     */
+    private $url;
+
     /**
      *
      * @return string Url assoluta dell'immagine
@@ -175,6 +183,24 @@ class Gift
 
     /**
      *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     *
+     * @param string $url 
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    }
+
+    /**
+     *
      * @param \simple_html_dom $htmlDom 
      * @todo implementazione
      */
@@ -182,7 +208,7 @@ class Gift
     {
         
     }
-    
+
 }
 
 ?>
