@@ -1,0 +1,11 @@
+{% extends "base.twig" %}
+
+{% block content %}
+<section id="get-started">
+    <p style="margin-bottom: 10px;">
+        Scrivi subito la tua letterina e divertiti a condividerla con i tuoi amici
+    </p>
+    <fb:login-button perms="user_birthday, email, publish_stream" show-faces="true" width="300" max-rows="2"></fb:login-button>
+</section>
+{{ parent() }}
+{% endblock %}
