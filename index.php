@@ -5,7 +5,7 @@ require_once __DIR__ . '/silex/bootstrap.php';
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-$app->post('/', function () use ($app)
+$app->match('/', function () use ($app)
     {
         if ($app['facebook']->getUser() > 0) {
             return $app->redirect('/add-gift');
