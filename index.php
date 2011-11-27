@@ -7,7 +7,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 $app->post('/', function () use ($app)
     {
-        $signedRequest = $app['facebook']->getSignedRequest();
+        if ($app['facebook']->getUser() > 0) {
+            return $app->redirect('/add-gift');
+        }
 
         return $app['twig']->render('welcome.twig', array(
                 'facebook' => $app['facebook'],
