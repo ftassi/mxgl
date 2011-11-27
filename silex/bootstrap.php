@@ -36,6 +36,7 @@ $app->register(new TobiassjostenSilexProvider\Facebook\FacebookServiceProvider()
 ));
 
 $app->register(new DoctrineMongoDBServiceProvider(), array(
+    'doctrine.odm.mongodb.metadata_cache' => 'ArrayCache',  //@see DoctrineMongoDBServiceProvider line 88: viene caricato sempre ArrayCache se != da apc
     'doctrine.odm.mongodb.proxies_dir' => __DIR__ . '/cache',
     'doctrine.odm.mongodb.hydrators_dir' => __DIR__ . '/cache',
     'doctrine.odm.mongodb.connection_options' => array(
