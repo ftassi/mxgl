@@ -3,6 +3,9 @@
 {% block content %}
 <section id="get-started">
     <p>Aggiungi un regalo</p>
+    {% if messages['form_result'] %}
+    <p class="flash-message">{{ messages['form_result'] }}</p>
+    {% endif %}
     <form action="/add-gift" method="post" class="clearfix">
         <fieldset class="fbbluebox noborders">
             <label class="grid_6"><input class="gift-url" type="text" name="gift[url]" id="gift_url" /></label>

@@ -19,6 +19,25 @@ $app->match('/', function () use ($app)
 
 $app->match('/add-gift', function(Request $request) use($app)
         {
+            $messages = array();
+            $messages['form_result'] = null;
+            
+            if ('POST' === $request->getMethod()) {
+                
+                $formData = $request->get('gift');
+                $giftUrl = filter_var($formData['url'], FILTER_VALIDATE_URL);
+                if ($giftUrl)
+                {
+                    $giftDocument = $app['gift'];
+                    $giftDocument->fromHtmlDom(file_get_html($giftUrl));
+                    $giftDocument->setUserId($app['facebook']->getUser());
+                    $app['doctrine.odm.mongodb.dm']->persist($giftDocument);
+                    $app['doctrine.odm.mongodb.dm']->flush();
+                    
+                    $messages['form_result'] = 'Il tuo desiderio è stato aggiunto';
+                }
+            }
+            
             $userGiftsList = $app['doctrine.odm.mongodb.dm']
                 ->getRepository('Document\Gift')
                 ->findBy(array('userId' => $app['facebook']->getUser()));
@@ -26,6 +45,7 @@ $app->match('/add-gift', function(Request $request) use($app)
             return $app['twig']->render('my_gift_list.twig', array(
                     'facebook' => $app['facebook'],
                     'gifts_list' => $userGiftsList,
+                    'messages'  =>  $messages
                 ));
         })
     ->method('GET|POST');
