@@ -60,7 +60,7 @@ class Gift
     /**
      *
      * @var string
-     * #Field(type="string")
+     * @Field(type="string")
      */
     private $url;
 
