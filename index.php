@@ -5,11 +5,11 @@ require_once __DIR__ . '/silex/bootstrap.php';
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-$app->match('/', function () use ($app)
+$app->post('/', function () use ($app)
     {
         $signedRequest = $app['facebook']->getSignedRequest();
 
-        return $app['twig']->render('debug.twig', array(
+        return $app['twig']->render('welcome.twig', array(
                 'facebook' => $app['facebook'],
             ));
     })
