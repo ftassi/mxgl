@@ -13,6 +13,7 @@ $app->match('/', function () use ($app)
 
             return $app['twig']->render('welcome.twig', array(
                     'facebook' => $app['facebook'],
+                    'config' => $app['config'],
                 ));
         })
     ->method('GET|POST');
@@ -43,6 +44,7 @@ $app->match('/add-gift', function(Request $request) use($app)
                 ->findBy(array('userId' => $app['facebook']->getUser()));
 
             return $app['twig']->render('my_gift_list.twig', array(
+                    'config' => $app['config'],
                     'facebook' => $app['facebook'],
                     'gifts_list' => $userGiftsList,
                     'messages'  =>  $messages

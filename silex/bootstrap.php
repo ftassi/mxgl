@@ -23,10 +23,16 @@ $app['autoloader']->registerNamespace('TobiassjostenSilexProvider\Facebook', __D
 $app->register(new Silex\Provider\SessionServiceProvider());
 $app['session']->start();
 
+$app['config'] = array(
+    'google_api_key' => getenv('GOOGLE_API_KEY'),
+    'facebook_app_id' => getenv('FACEBOOK_APP_ID'),
+    'facebook_secret' => getenv('FACEBOOK_SECRET'),
+);
+
 $app->register(new TobiassjostenSilexProvider\Facebook\FacebookServiceProvider(), array(
     'facebook.class_file' => __DIR__ . '/vendor/facebook-php-sdk/src/facebook.php',
-    'facebook.app_id' => getenv('FACEBOOK_APP_ID'),
-    'facebook.secret' => getenv('FACEBOOK_SECRET'),
+    'facebook.app_id' => $app['config']['facebook_app_id'],
+    'facebook.secret' => $app['config']['facebook_secret'],
 ));
 
 $app->register(new DoctrineMongoDBServiceProvider(), array(
@@ -49,15 +55,16 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.class_path' => __DIR__ . '/vendor/twig/lib',
 ));
 
-$app['gift'] = function(){
-    
-    $gift = new Gift();
-    $gift->setTitle('Playstation 3');
-    $gift->setUrl('http://us.playstation.com/ps3/');
-    $gift->setImage('http://i.telegraph.co.uk/multimedia/archive/01551/ps3_1551882c.jpg');
-    $gift->setDescription('Are you ready to play? We thought so. The PS3™ system has you covered. If you want the best games from the best franchises in high definition and stereoscopic 3D, you’ve come to the right place. But play doesn’t stop there. The PS3™ system is the only console with a built in Blu-ray™ player. Watch or stream thousands of movies in high definition directly to your system. And/but who wants to play alone? The PlayStation®Network has all the content and community support to ensure you always have someone to play with. Welcome to the PlayStation Nation. Long Live Play.™');
-    $gift->setNote('LA VOGLIO!!!');
-    return $gift;
-};
+$app['gift'] = function()
+    {
+
+        $gift = new Gift();
+        $gift->setTitle('Playstation 3');
+        $gift->setUrl('http://us.playstation.com/ps3/');
+        $gift->setImage('http://i.telegraph.co.uk/multimedia/archive/01551/ps3_1551882c.jpg');
+        $gift->setDescription('Are you ready to play? We thought so. The PS3™ system has you covered. If you want the best games from the best franchises in high definition and stereoscopic 3D, you’ve come to the right place. But play doesn’t stop there. The PS3™ system is the only console with a built in Blu-ray™ player. Watch or stream thousands of movies in high definition directly to your system. And/but who wants to play alone? The PlayStation®Network has all the content and community support to ensure you always have someone to play with. Welcome to the PlayStation Nation. Long Live Play.™');
+        $gift->setNote('LA VOGLIO!!!');
+        return $gift;
+    };
 
 AnnotationRegistry::registerFile(__DIR__ . '/vendor/doctrine-mongodb-odm/lib/Doctrine/ODM/MongoDB/Mapping/Annotations/DoctrineAnnotations.php');
