@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-        <title>{% block title %}{% endblock %}</title>
+        <title>{% block title %}My Xmas Gift List{% endblock %}</title>
         <meta name="description" content="">
         <meta name="author" content="">
 
@@ -22,8 +22,9 @@
     <body>
         {% block container %}
         <div id="container">
-            {% block content header %}
+            {% block header %}
             <header class="clearfix">
+                {% block header_content %}
                 <h1>My Xmas Gift List</h1>
                 <p class="grid_8">
                     Ciao ,
@@ -37,9 +38,12 @@
                     alla lista . Ricorda che puoi aggiungere un massimo di 
                     5 regali (solo se te li meriti).
                 </p>
+                {% endblock %}
             </header>
             {% endblock %}
-            {% block content%}{% endblock %}
+            {% block content%}
+            <section id="guides"></section>
+            {% endblock %}
             {% block footer %}
             <footer>
             </footer>
