@@ -41,7 +41,7 @@ $app->register(new DoctrineMongoDBServiceProvider(), array(
     'doctrine.odm.mongodb.proxies_dir' => __DIR__ . '/cache',
     'doctrine.odm.mongodb.hydrators_dir' => __DIR__ . '/cache',
     'doctrine.odm.mongodb.connection_options' => array(
-        'database' => 'mxgl',
+//        'database' => 'mxgl',
         'host' => $app['config']['mongodb_host'],
     ),
     'doctrine.odm.mongodb.documents' => array(
