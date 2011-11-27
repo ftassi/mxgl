@@ -30,7 +30,7 @@ $app->match('/add-gift', function(Request $request) use($app)
                 if ($giftUrl)
                 {
                     $giftDocument = $app['gift'];
-                    $giftDocument->fromHtmlDom(file_get_html($giftUrl));
+//                    $giftDocument->fromHtmlDom(file_get_html($giftUrl));
                     $giftDocument->setUserId($app['facebook']->getUser());
                     $app['doctrine.odm.mongodb.dm']->persist($giftDocument);
                     $app['doctrine.odm.mongodb.dm']->flush();
