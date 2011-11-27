@@ -26,11 +26,11 @@
             </header>
             <section id="get-started">
                 <p>Debug Info</p>
-                {{ facebook.signedRequest }}
-                {{ facebook.user }}
-                
             </section>
             <footer>
+                {{ facebook.user }}
+                <fb:login-button perms="email, publish_stream, offline_access" show-faces="true"></fb:login-button>
+                <fb:login-button perms="email, publish_stream, publish_checkins, publish_actions" show-faces="true" width="200" max-rows="1"></fb:login-button>
             </footer>
         </div> <!--! end of #container -->
         <div id="fb-root"></div>
@@ -38,12 +38,19 @@
             window.fbAsyncInit = function() {
                 FB.init({
                     appId      : '{{facebook.appId}}', // App ID
+                    channelURL : '//sf2.mxgl/channel.php', // Channel File
                     status     : true, // check login status
                     cookie     : true, // enable cookies to allow the server to access the session
                     oauth      : true, // enable OAuth 2.0
                     xfbml      : true  // parse XFBML
                 });
 
+                FB.Event.subscribe('auth.login', function(response) {
+                    // Reload the entire page. Could also do an Ajax request and dynamically
+                    // update the already loaded page.
+                    window.location.reload(true);
+                });
+            };
 
             // Load the SDK Asynchronously
             (function(d){

@@ -1,0 +1,39 @@
+{% extends "base.twig" %}
+
+{% block content %}
+<section id="get-started">
+    <p>Aggiungi un regalo</p>
+    <form action="/add-gift" method="post" class="clearfix">
+        <fieldset class="fbbluebox noborders">
+            <label class="grid_6"><input class="gift-url" type="text" name="gift[url]" id="gift_url" /></label>
+            <label class="grid_2"><input class="button" type="submit" value="Aggiungi Regalo" /></label>
+        </fieldset>
+    </form>
+</section>
+<section id="guides">
+    <p class="grid_8">
+        Naviga su Internet sui siti dei prodotti o servizi che 
+        vorrest i ricevere in regalo quest’anno e copia l’indirizzo 
+        (l’URL che vedi in alto sul tuo browser) direttamente  nel 
+        box qui sotto e poi premi OK.
+    </p>
+</section>
+<section id="list" class="clearfix">
+    {% if gifts_list | length > 0%}
+    <h2>Hai scelto questi regali</h2>
+    <ul>
+        {% for gift in gifts_list %}
+        <li>
+            <img src="{{gift.image}}" alt"{{ gift.title }}" />
+                 {{ gift.title }}<br />
+            {{ gift.description }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <h2>Non hai ancora scelto nessun regalo, che aspetti ?</h2>
+    {% endif %}
+</section>
+
+
+{% endblock %}
