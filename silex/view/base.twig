@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-        <title></title>
+        <title>{% block title %}{% endblock %}</title>
         <meta name="description" content="">
         <meta name="author" content="">
 
@@ -20,7 +20,9 @@
     </head>
 
     <body>
+        {% block container %}
         <div id="container">
+            {% block content header %}
             <header class="clearfix">
                 <h1>My Xmas Gift List</h1>
                 <p class="grid_8">
@@ -36,52 +38,36 @@
                     5 regali (solo se te li meriti).
                 </p>
             </header>
-            <section id="get-started">
-                <p>Aggiungi un regalo</p>
-                <form action="/add-gift" method="post" class="clearfix">
-                    <input type="hidden" name="gift[user_id]" id="gift_user_id" value="{{ user_id }}" />
-                    <fieldset class="fbbluebox noborders">
-                        <label class="grid_6"><input class="gift-url" type="text" name="gift[url]" id="gift_url" /></label>
-                        <label class="grid_2"><input class="button" type="submit" value="Aggiungi Regalo" /></label>
-                    </fieldset>
-                </form>
-            </section>
-            <section id="guides">
-                <p class="grid_8">
-                    Naviga su Internet sui siti dei prodotti o servizi che 
-                    vorrest i ricevere in regalo quest’anno e copia l’indirizzo 
-                    (l’URL che vedi in alto sul tuo browser) direttamente  nel 
-                    box qui sotto e poi premi OK.
-                </p>
-            </section>
-            <section id="list" class="clearfix">
-                <h2>Hai scelto questi regali</h2>
-                <ul>
-                    {% for gift in gifts_list %}
-                    <li>
-                        <img src="{{gift.image}}" alt"{{ gift.title }}" />
-                        {{ gift.title }}<br />
-                        {{ gift.description }}
-                    </li>
-                    {% endfor %}
-                </ul>
-            </section>
+            {% endblock %}
+            {% block content%}{% endblock %}
+            {% block footer %}
             <footer>
-
             </footer>
+            {% endblock %}
         </div> <!--! end of #container -->
+        {% endblock %}
+        {% block fb_js_sdk%}
         <div id="fb-root"></div>
         <script>
             window.fbAsyncInit = function() {
                 FB.init({
                     appId      : '{{facebook.appId}}', // App ID
+                    channelURL : '//sf2.mxgl/channel.php', // Channel File
                     status     : true, // check login status
                     cookie     : true, // enable cookies to allow the server to access the session
                     oauth      : true, // enable OAuth 2.0
                     xfbml      : true  // parse XFBML
                 });
+                
+                FB.Event.subscribe('auth.login', function(response) {
+                    // Reload the entire page. Could also do an Ajax request and dynamically
+                    // update the already loaded page.
+                    window.location.reload(true);
+                });
+                {% block post_init_js_code %}{% endblock %}
+            };
 
-
+            {% block js_async_load %}
             // Load the SDK Asynchronously
             (function(d){
                 var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
@@ -89,6 +75,8 @@
                 js.src = "//connect.facebook.net/en_US/all.js";
                 d.getElementsByTagName('head')[0].appendChild(js);
             }(document));
+            {% endblock %}
         </script>
+        {% endblock %}
     </body>
 </html>
