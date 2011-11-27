@@ -24,15 +24,15 @@
 <section id="list" class="clearfix">
     {% if gifts_list | length > 0%}
     <h2>Hai scelto questi regali</h2>
-    <ul>
+    <dl>
         {% for gift in gifts_list %}
-        <li>
+        <dt>{{ gift.title }}</dt>
+        <dd>
             <img src="{{gift.image}}" alt"{{ gift.title }}" />
-                 {{ gift.title }}<br />
             {{ gift.description }}
-        </li>
+        </dd>
         {% endfor %}
-    </ul>
+    </dl>
     {% else %}
     <h2>Non hai ancora scelto nessun regalo, che aspetti ?</h2>
     {% endif %}
