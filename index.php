@@ -28,8 +28,7 @@ $app->match('/add-gift', function(Request $request) use($app)
                         $formData = $request->get('gift');
                         $giftUrl = filter_var($formData['url'], FILTER_VALIDATE_URL);
                         if ($giftUrl) {
-                            $giftDocument = $app['gift'];
-//                    $giftDocument->fromHtmlDom(file_get_html($giftUrl));
+                            $giftDocument = $app['giftComposer']->fromUrl($giftUrl);
                             $giftDocument->setUserId($app['facebook']->getUser());
                             $app['doctrine.odm.mongodb.dm']->persist($giftDocument);
                             $app['doctrine.odm.mongodb.dm']->flush();
