@@ -32,6 +32,13 @@ class Gift
      * @Field(type="string")
      */
     private $image;
+    
+    /**
+     *
+     * @var string 
+     * @Field(type="string")
+     */
+    private $images;
 
     /**
      * @var string
@@ -201,13 +208,23 @@ class Gift
 
     /**
      *
-     * @param \simple_html_dom $htmlDom 
-     * @todo implementazione
+     * @return array
      */
-    public function fromHtmlDom(\simple_html_dom $htmlDom)
+    public function getImages()
     {
-        
+        return unserialize($this->images);
     }
+
+    /**
+     *
+     * @param array $images 
+     */
+    public function setImages($images)
+    {
+        $this->images = serialize($images);
+    }
+
+
 
 }
 
