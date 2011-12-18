@@ -4,6 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 require_once __DIR__ . '/silex.phar';
+require_once __DIR__ . '/vendor/goutte/goutte.phar';
 require_once __DIR__ . '/vendor/simplehtmldom/simple_html_dom.php';
 require_once __DIR__ . '/extensions/FacebookServiceProvider/FacebookServiceProvider.php';
 
@@ -11,11 +12,13 @@ use Knp\Silex\ServiceProvider\DoctrineMongoDBServiceProvider;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Document\Gift;
 use Goutte\Client;
+use Builder\GiftBuilder;
 
 $app = new Silex\Application();
 $app['debug'] = true;
 
 $app['autoloader']->registerNamespace('Document', __DIR__);
+$app['autoloader']->registerNamespace('Builder', __DIR__);
 $app['autoloader']->registerNamespace('Knp', __DIR__ . '/extensions/DoctrineMongoDB/src');
 $app['autoloader']->registerNamespace('TobiassjostenSilexProvider\Facebook', __DIR__ . '/extensions/FacebookServiceProvider');
 
