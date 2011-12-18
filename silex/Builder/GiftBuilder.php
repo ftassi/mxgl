@@ -4,6 +4,7 @@ namespace Builder;
 
 use Document\Gift;
 use Goutte\Client;
+use Symfony\Component\DomCrawler\Crawler;
 
 /**
  *
@@ -34,13 +35,60 @@ class GiftBuilder
      */
     public function fromUrl($url)
     {
+        $crawler = $this->client->request('GET', $url);
+
         $gift = new Gift();
-        $gift->setTitle('Playstation 3');
-        $gift->setUrl('http://us.playstation.com/ps3/');
-        $gift->setImage('http://i.telegraph.co.uk/multimedia/archive/01551/ps3_1551882c.jpg');
-        $gift->setDescription('Are you ready to play? We thought so. The PS3™ system has you covered. If you want the best games from the best franchises in high definition and stereoscopic 3D, you’ve come to the right place. But play doesn’t stop there. The PS3™ system is the only console with a built in Blu-ray™ player. Watch or stream thousands of movies in high definition directly to your system. And/but who wants to play alone? The PlayStation®Network has all the content and community support to ensure you always have someone to play with. Welcome to the PlayStation Nation. Long Live Play.™');
-        $gift->setNote('LA VOGLIO!!!');
+        $gift->setTitle($this->extractTitle($crawler));
+        $gift->setDescription($this->extractDescription($crawler));
+        $gift->setUrl($url);
+
+        $gift->setImage($this->extractImage($crawler));
         return $gift;
+    }
+
+    protected function extractTitle(Crawler $crawler)
+    {
+        $title = $crawler->filter('meta[property="og:title"]');
+        if (count($title)) {
+            $title = $title->extract(array('content'));
+            return $title[0];
+        }
+
+        $title = $crawler->filter('h1');
+        if (count($title)) {
+            return $title->text();
+        }
+
+        return '';
+    }
+
+    protected function extractDescription(Crawler $crawler)
+    {
+        $description = $crawler->filter('meta[name="description"]');
+        if (count($description) > 0) {
+            $description = $description->extract(array('content'));
+            return $description[0];
+        }
+
+        return '';
+    }
+    
+    protected function extractImage(Crawler $crawler)
+    {
+        $image = $crawler->filter('meta[property="og:image"]');
+        if (count($image))
+        {
+            $image = $image->filter(array('content'));
+            return $image[0];
+        }
+        
+        $image = $crawler->filter('img');
+        if(count($image))
+        {
+            return $image->attr('src');
+        }
+        
+        return '';
     }
 
 }
