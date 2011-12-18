@@ -3,7 +3,7 @@
 namespace Builder;
 
 use Document\Gift;
-use Symfony\Component\DomCrawler\Crawler;
+use Goutte\Client;
 
 /**
  *
@@ -14,17 +14,17 @@ class GiftBuilder
 
     /**
      *
-     * @var Crawler
+     * @var Client
      */
-    protected $crawler;
+    protected $client;
 
     /**
      *
-     * @param Crawler $crawler 
+     * @param Crawler $client 
      */
-    function __construct(Crawler $crawler)
+    function __construct(Client $client)
     {
-        $this->crawler = $crawler;
+        $this->client = $client;
     }
 
     /**

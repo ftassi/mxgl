@@ -64,8 +64,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 $app['giftComposer'] = function()
     {
         $client = new Client();
-        $crawler = $client->request('GET', 'http://www.google.it');
-        return new GiftBuilder($crawler);
+        return new GiftBuilder($client);
     };
 
 AnnotationRegistry::registerFile(__DIR__ . '/vendor/doctrine-mongodb-odm/lib/Doctrine/ODM/MongoDB/Mapping/Annotations/DoctrineAnnotations.php');
